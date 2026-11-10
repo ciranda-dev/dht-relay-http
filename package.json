@@ -1,6 +1,6 @@
 {
   "name": "@ciranda/dht-relay-http",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Relaying the Hyperswarm DHT over plain HTTP, for hosts that have nothing else",
   "exports": {
     "./package": "./package.json",
@@ -13,7 +13,8 @@
   "files": [
     "index.js",
     "server.js",
-    "bin.js"
+    "bin.js",
+    "NOTICE"
   ],
   "imports": {
     "http": {
