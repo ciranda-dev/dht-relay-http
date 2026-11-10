@@ -1,0 +1,53 @@
+{
+  "name": "@ciranda/dht-relay-http",
+  "version": "0.0.0",
+  "description": "Relaying the Hyperswarm DHT over plain HTTP, for hosts that have nothing else",
+  "exports": {
+    "./package": "./package.json",
+    ".": "./index.js",
+    "./server": "./server.js"
+  },
+  "bin": {
+    "dht-relay-http": "./bin.js"
+  },
+  "files": [
+    "index.js",
+    "server.js",
+    "bin.js"
+  ],
+  "imports": {
+    "http": {
+      "bare": "bare-http1",
+      "default": "http"
+    }
+  },
+  "scripts": {
+    "format": "prettier --write . && lunte --fix",
+    "lint": "prettier --check . && lunte",
+    "test": "npm run test:bare && npm run test:node",
+    "test:bare": "brittle-bare --coverage test.js",
+    "test:node": "brittle-node --coverage test.js"
+  },
+  "author": "Ciranda",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@hyperswarm/dht-relay": "^0.4.3",
+    "b4a": "^1.9.0",
+    "compact-encoding": "^2.19.2",
+    "graceful-goodbye": "^1.3.3",
+    "hyperdht": "^6.36.0",
+    "sodium-universal": "^5.0.1",
+    "streamx": "^2.28.1"
+  },
+  "devDependencies": {
+    "bare-fetch": "^3.4.1",
+    "bare-http1": "^4.6.3",
+    "brittle": "^3.18.0",
+    "hypercore": "^11.40.3",
+    "hyperswarm": "^4.17.2",
+    "lunte": "^1.8.6",
+    "prettier": "^3.6.2",
+    "prettier-config-holepunch": "^2.0.0",
+    "test-tmp": "^1.4.0"
+  }
+}
