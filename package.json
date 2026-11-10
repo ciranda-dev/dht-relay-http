@@ -28,8 +28,16 @@
     "test:bare": "brittle-bare --coverage test.js",
     "test:node": "brittle-node --coverage test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciranda-dev/dht-relay-http.git"
+  },
   "author": "Ciranda",
   "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ciranda-dev/dht-relay-http/issues"
+  },
+  "homepage": "https://github.com/ciranda-dev/dht-relay-http#readme",
   "dependencies": {
     "@hyperswarm/dht-relay": "^0.4.3",
     "b4a": "^1.9.0",
