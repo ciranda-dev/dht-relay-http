@@ -4,6 +4,9 @@ Relaying the Hyperswarm DHT over plain HTTP, for hosts that have nothing else.
 
 A transport for [`@hyperswarm/dht-relay`](https://github.com/holepunchto/hyperswarm-dht-relay), next to its TCP and WebSocket ones. The relayed side sends frames with `POST` and receives them with a long-polling `GET`, through the HTTP client it is given, so it runs where an app gets no sockets at all, such as an Apple Watch, where only `URLSession` is allowed.
 
+> [!NOTE]
+> `@hyperswarm/dht-relay` was archived by Holepunch on 2026-10-15 and is marked experimental. This module works with its last release, 0.4.3, and will follow whatever replaces it.
+
 ```
 npm i @ciranda/dht-relay-http
 ```
