@@ -90,3 +90,9 @@ tests skip both cases (`custodial: [true/*, false */]` in its server mode tests)
 `@hyperswarm/dht-relay` 0.4.3, `hyperdht` 6.36.0, `hyperswarm` 4.17.2, in Node.
 
 A relayed peer is a client only: it can reach peers that listen on the DHT directly.
+
+A client without custody gets the keep-alives of the remote peer (empty encrypted messages, every 5 s from a
+`hyperdht` peer) as empty `data` events, as its `SecretStream` is made without `keepAlive` or
+`filterZeroByteMessages`. Measured with a test added to `../forks/hyperswarm-dht-relay` (branch `fix/keepalive`,
+`client mode, keep-alive of the server`): it fails for `custodial: false` on 0.4.3 and passes with
+`filterZeroByteMessages: true` on that stream, where the whole suite passes (14/14 tests, 49/49 asserts, Node).

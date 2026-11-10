@@ -35,7 +35,7 @@ const dht = new DHT(new Stream('https://relay.example.com', { fetch }), { custod
 
 Always pass `custodial: false`. The default of `@hyperswarm/dht-relay` sends the secret key of the client to the relay, which can then decrypt and sign everything as the client. With `custodial: false` the key stays on the client, Noise runs end to end, and the relay forwards ciphertext. It still sees the public keys, the topics and the address of the client.
 
-The relayed side can connect to peers, not accept connections: `@hyperswarm/dht-relay` does not yet complete incoming connections without custody.
+The relayed side can connect to peers, not accept connections: `@hyperswarm/dht-relay` does not yet complete incoming connections without custody. Its 0.4.3 also passes the keep-alives of the remote peer to a client without custody as empty messages.
 
 ### With URLSession
 
@@ -111,6 +111,13 @@ dht-relay-http [--port 49443] [--host 0.0.0.0] [--behind-proxy]
 ```
 
 The relay speaks plain HTTP. Terminate TLS at a reverse proxy in front of it, such as Caddy or nginx, and pass `--behind-proxy`. Without TLS, anyone on the path sees which keys and topics a client asks for, and an Apple Watch only allows HTTPS anyway. The CLI logs how many sessions are open, never an address or a session.
+
+With Caddy, which gets the certificate and sets `X-Forwarded-For`, that is one line next to the relay:
+
+```sh
+dht-relay-http --host 127.0.0.1 --behind-proxy
+caddy reverse-proxy --from relay.example.com --to 127.0.0.1:49443
+```
 
 ## Protocol
 
